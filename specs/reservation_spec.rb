@@ -12,25 +12,5 @@ describe 'reservations class' do
       new_reservation.must_be_instance_of Reservation
     end
 
-  describe 'load_reservations' do
-
-      it "can list all reservations made" do
-
-        new_hotel = Hotel.new
-
-        reservations = [
-          reservation_001 = Reservation.new(start_date = Date.new(2018,3,12),end_date = Date.new(2018,3,16)),
-          reservation_002 = Reservation.new(start_date = Date.new(2018,3,14), end_date = Date.new(2018,3,20)),
-          reservation_003 = Reservation.new(start_date = Date.new(2018,4,12), end_date = Date.new(2018,3,16))
-      ]
-
-  
-        new_hotel.reservations
-        @reservations.must_be_kind_of Array
-        @reservations.must_equal reservations
-
-
-      end
-    end
   end
 end
