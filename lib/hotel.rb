@@ -12,15 +12,6 @@ class Hotel
   end
 
 
-  # access a list of all rooms
-  # def list_rooms
-  #   print rooms
-  # end
-
-  # returns a list of all reservations
-  # def reservations
-  #   @reservations
-  # end
 
   # find an available room for the new reservation
   # go through the rooms array to pick a room number
@@ -28,15 +19,16 @@ class Hotel
   # assign the room number to the new reservation
   def find_available_room
     if reservations.length == 0
-      @rooms.sample
-      return rooms
+      room_number = @rooms.sample
+    else
+      room_number = @rooms.sample
+      # @rooms.collect { |room_number|  }
+    return room_number
     end
   end
 
   def create_reservation(start_date, end_date)
-    find_available_room
-    new_res = reservation.new(room, start_date, end_date)
-    # shovel reservation into hotel reservations
-    @reservations << new_res
+    new_res = Reservation.new(start_date, end_date,find_available_room)
+    reservations << new_res
   end
 end
