@@ -15,13 +15,17 @@ describe 'reservations class' do
 
   describe 'days_booked' do
     it "calculates days booked correctly" do
+      new_reservation = Reservation.new(Date.new(2018,3,10), Date.new(2018,3,15),3)
 
+      new_reservation.days_booked.must_equal 5
     end
   end
 
   describe 'total_cost' do
     it "calculates total_cost correctly" do
+      new_reservation = Reservation.new(Date.new(2018,5,10), Date.new(2018,5,20),9)
 
+      new_reservation.total_cost.must_equal 2000
     end
   end
 end

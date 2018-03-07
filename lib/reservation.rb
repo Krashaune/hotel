@@ -3,6 +3,7 @@ require 'date'
 require 'pry'
 
 class Reservation
+attr_reader :start_date, :end_date
 
   RATE = 200
 
@@ -16,6 +17,9 @@ class Reservation
     # raise ArgumentError.new('Invalid date') if start_date.valid_date? == false || end_date.valid_date == false
   end # initialize
 
+# overlap? method reservation needs to take in date range and determine if it overlaps with self any other reservations ie boolean output
+
+#
 
   # calculate days booked to help determine the cost of the reservation
   # days_booked should not include the last day of the reservation

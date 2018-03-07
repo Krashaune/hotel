@@ -40,7 +40,7 @@ describe 'hotel class' do
       new_reservation = new_building.create_reservation(Date.new(2018,3,7),Date.new(2018,3,10))
       new_reservation = new_building.create_reservation(Date.new(2018,3,8),Date.new(2018,3,11))
 
-      ap new_building.reservations
+      # ap new_building.reservations
       # binding.pry
       # new_building.reservations[room_number].must_be :>,0
       # new_building.reservations[room_number].must_be :<,20

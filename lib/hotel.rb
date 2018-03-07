@@ -4,7 +4,7 @@ require 'pry'
 # class hotel should store and manage the room and reservation lists
 
 class Hotel
-  attr_accessor :rooms, :reservations
+  attr_reader :rooms, :reservations
   # the ability to create a hotel instance
   def initialize
     @rooms = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]# 1-20
@@ -21,6 +21,8 @@ class Hotel
     if reservations.length == 0
       room_number = @rooms.sample
     else
+  # look to overlap? to determine whether a reservation overlaps with another and if not i,e false room number is then available.
+  
       room_number = @rooms.sample
       # @rooms.collect { |room_number|  }
     return room_number
