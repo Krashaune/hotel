@@ -25,7 +25,7 @@ describe 'reservations class' do
     it "calculates total_cost correctly" do
       new_reservation = Reservation.new(Date.new(2018,5,10), Date.new(2018,5,20),9)
 
-      new_reservation.total_cost.must_equal 2000
+      new_reservation.total_cost.must_equal 1800
     end
   end
 end

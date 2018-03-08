@@ -32,18 +32,17 @@ describe 'hotel class' do
       room_number.must_be :<,20
     end
 
-    it "can find a room when there is one or more reservations" do
+    it "can find an available room when there is one or more reservations" do
       new_building = Hotel.new
       room_number = new_building.find_available_room
 
       new_reservation = new_building.create_reservation(Date.new(2018,3,6),Date.new(2018,3,9))
-      new_reservation = new_building.create_reservation(Date.new(2018,3,7),Date.new(2018,3,10))
-      new_reservation = new_building.create_reservation(Date.new(2018,3,8),Date.new(2018,3,11))
+      new_reservation = new_building.create_reservation(Date.new(2018,3,7),Date.new(2018,3,8))
 
-      # ap new_building.reservations
+      ap new_building.reservations
       # binding.pry
-      # new_building.reservations[room_number].must_be :>,0
-      # new_building.reservations[room_number].must_be :<,20
+      new_building.reservations.room_number.must_be :>,0
+      new_building.reservations.room_number.must_be :<,20
     end
   end
 

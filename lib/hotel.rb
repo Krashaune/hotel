@@ -12,7 +12,6 @@ class Hotel
   end
 
 
-
   # find an available room for the new reservation
   # go through the rooms array to pick a room number
   # if the room number is not included in the reservations array
@@ -21,16 +20,30 @@ class Hotel
     if reservations.length == 0
       room_number = @rooms.sample
     else
-  # look to overlap? to determine whether a reservation overlaps with another and if not i,e false room number is then available.
-  
-      room_number = @rooms.sample
-      # @rooms.collect { |room_number|  }
-    return room_number
+      # go through @rooms array and sample a room_number
+      # with that room_number call reserevation_overlap?
+      # determine whether the new reservations date range overlaps
+      # with reservations in the reservation array
+      # until false return room number is then available.
+      @rooms.each do |room|
+        room_number = rooms.sample
+        unless false
+          room_number.reservation_overlap?(Reservation.new(start_date,end_date))
+        end
+      end
+      return room_number
     end
   end
+
+  # take in a room_number
 
   def create_reservation(start_date, end_date)
     new_res = Reservation.new(start_date, end_date,find_available_room)
     reservations << new_res
+  end
+
+  # overlap? method reservation needs to take in date range and determine if it overlaps with self any other reservations ie boolean output
+  def reservation_overlap?(start_date, end_date)
+    return false if start_date >= end_date || end_date <= start_date
   end
 end

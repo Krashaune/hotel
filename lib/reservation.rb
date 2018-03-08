@@ -17,20 +17,17 @@ attr_reader :start_date, :end_date
     # raise ArgumentError.new('Invalid date') if start_date.valid_date? == false || end_date.valid_date == false
   end # initialize
 
-# overlap? method reservation needs to take in date range and determine if it overlaps with self any other reservations ie boolean output
-
-#
 
   # calculate days booked to help determine the cost of the reservation
   # days_booked should not include the last day of the reservation
   # checkout day days_booked is the (end_date - start_date)
   def days_booked
-    @end_date - @start_date
+    end_date - start_date
   end
 
   # calculate total cost of reservation using the days booked and RATE
   def total_cost
-    total_cost = days_booked * RATE
+    total_cost = (days_booked - 1)* RATE
     return total_cost
   end
 
