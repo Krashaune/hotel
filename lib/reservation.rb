@@ -3,7 +3,7 @@ require 'date'
 require 'pry'
 
 class Reservation
-attr_reader :start_date, :end_date
+attr_reader :start_date, :end_date, :room_number
 
   RATE = 200
 

@@ -19,7 +19,7 @@ class Hotel
   def find_available_room
     if reservations.length == 0
       room_number = @rooms.sample
-    # else
+    else
       # go through @rooms array and sample a room_number
       # with that room_number call reserevation_overlap?
       # determine whether the new reservations date range overlaps
@@ -52,8 +52,10 @@ class Hotel
   def create_reservation(reservation)
     start_date = reservation.start_date
     end_date = reservation.end_date
-    new_res = Reservation.new(start_date, end_date,find_available_room)
+    room_number = find_available_room
+    new_res = Reservation.new(start_date, end_date,room_number)
     reservations << new_res
+    return new_res
   end
 
   # overlap? method reservation needs to take in date range and determine if it overlaps with self any other reservations ie boolean output
