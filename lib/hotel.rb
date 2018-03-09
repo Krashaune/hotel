@@ -19,19 +19,19 @@ class Hotel
   def find_available_room
     if reservations.length == 0
       room_number = @rooms.sample
-    else
+    # else
       # go through @rooms array and sample a room_number
       # with that room_number call reserevation_overlap?
       # determine whether the new reservations date range overlaps
       # with reservations in the reservation array
       # until false return room number is then available.
-      @rooms.each do |room|
-        room_number = rooms.sample
-        # until false
-          reservation_overlap?(Reservation.new(start_date,end_date))
-          #   room_number.
-        # end
-      end
+      # @rooms.each do |room|
+      #   rooms.sample
+      #   room_number = rooms.sample
+      #   until false
+      #     reservation_overlap?(reservation.start_date,reservation.end_date)
+      #   end
+      # end
     end
     return room_number
   end
@@ -39,11 +39,13 @@ class Hotel
   # take in a date and list the reservations during that date
   def list_reservations(date)
     # pass in a date
-    # go through the reservations array and list all reservations
-    # during that date range
+    # go through the reservations array and list all reservations during that date range
+    list = []
     reservations.each do |reservation|
-      date.between?(start_date, end_date)
-      return reservations
+      if date.between?(reservation.start_date,reservation.end_date)
+      list << reservation
+      end
+    return list
     end
   end
 
