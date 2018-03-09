@@ -32,24 +32,26 @@ describe 'hotel class' do
       room_number.must_be :<,20
     end
 
-    it "can find an available room when there is one or more reservations" do
-      new_building = Hotel.new
-      room_number = new_building.find_available_room
-
-      new_reservation = new_building.create_reservation(Date.new(2018,3,6),Date.new(2018,3,9))
-      new_reservation = new_building.create_reservation(Date.new(2018,3,7),Date.new(2018,3,8))
-
-      ap new_building.reservations
-      # binding.pry
-      new_building.reservations.room_number.must_be :>,0
-      new_building.reservations.room_number.must_be :<,20
-    end
+    # it "can find an available room when there is one or more reservations" do
+    #   new_building = Hotel.new
+    #   # room_number = new_building.find_available_room
+    #
+    #   new_reservation = new_building.create_reservation(Date.new(2018,3,6),Date.new(2018,3,9))
+    #   new_reservation_2 = new_building.create_reservation(Date.new(2018,3,7),Date.new(2018,3,8))
+    #
+    #   # ap new_building.reservations
+    #   # binding.pry
+    #   # new_building.reservations.room_number.must_be :>,0
+    #   # new_building.reservations.room_number.must_be :<,20
+    #   new_building.new_reservation.room_number.wont_be_same_as new_building.new_reservation_2.room_number
+    # end
   end
 
   describe 'create_reservation' do
     it "can create a reservation" do
       new_building = Hotel.new
-      new_reservation = new_building.create_reservation(Date.new(2018,3,6),Date.new(2018,3,9))
+      Reservation.new(Date.new(2018,3,6),Date.new(2018,3,9))
+      new_building.create_reservation(data)
 
       new_building.reservations.length.must_equal 1
       new_building.reservations.length.must_be :>, 0
@@ -63,6 +65,17 @@ describe 'hotel class' do
 
       new_reservation.length.must_equal 3
       new_building.reservations.length.must_be :>, 2
+    end
+  end
+
+  describe 'list_reservations' do
+    it "will list all reservations during the date passed in" do
+      new_building = Hotel.new
+      new_reservation = new_building.create_reservation(Date.new(2018,6,1),Date.new(2018,6,6))
+
+      res = new_building.list_reservations(Date.new(2018,6,2))
+      res.must_be_kind_of Array
+      new_building.reservations.length.must_equal 1
     end
   end
 end
