@@ -32,6 +32,21 @@ describe 'hotel class' do
       room_number.must_be :<,20
     end
 
+    it "can find an available room when dates overlap with existing reservation" do
+
+      new_building = Hotel.new
+      new_reservation = Reservation.new(Date.new(2018,3,6),Date.new(2018,3,9),1)
+      res_0 = new_building.create_reservation(new_reservation)
+
+      new_reservation_2 = Reservation.new(Date.new(2018,3,6),Date.new(2018,3,9),1)
+
+      res_1 = new_building.create_reservation(new_reservation_2)
+      # ap new_building.reservations
+
+      res_1.room_number.wont_be_same_as res_0.room_number
+
+    end
+
     it "can find an available room when there is one or more reservation" do
       new_building = Hotel.new
       room_number = new_building.find_available_room
@@ -41,9 +56,6 @@ describe 'hotel class' do
 
       new_res = new_building.create_reservation(new_reservation_2)
       new_res_1 = new_building.create_reservation(new_reservation)
-
-      # ap new_building.reservations
-      # binding.pry
 
       new_res.room_number.wont_be_same_as new_res_1.room_number
     end
