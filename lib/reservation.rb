@@ -20,9 +20,7 @@ attr_reader :start_date, :end_date, :room_number
   #validate the dates for checkin and checkout
   def valid_date
     unless @end_date == nil || @start_date == nil
-      if @end_date < @start_date
-        raise ArgumentError.new('Invalid date range')
-      end
+      raise ArgumentError.new('Invalid date range') if @end_date < @start_date
     end
   end
 
