@@ -12,13 +12,18 @@ describe 'reservations class' do
       new_reservation.must_be_instance_of Reservation
     end
 
-    # it "raises and ArgumentError if start_date or end_date are invalid" do
-    #   new_res = Reservation.new(Date.new(2018,2,5), Date.new(2018,2,30),3)
-    #
-    #   proc{
-    #     new_res
-    #   }.must_raise ArgumentError
-    # end
+    it "raises and ArgumentError if end_date is before start_date" do
+
+        start_date = Date.new(2018,2,20),
+        end_date = Date.new(2018,2,2),
+        room_number = 4
+
+
+      proc {
+        new_res = Reservation.new(start_date, end_date, room_number)
+      }.must_raise ArgumentError
+
+    end
   end
 
   describe 'days_booked' do

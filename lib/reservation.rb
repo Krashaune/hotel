@@ -14,8 +14,17 @@ attr_reader :start_date, :end_date, :room_number
     @start_date = start_date
     @end_date = end_date
 
-    # raise ArgumentError.new('Invalid date') if Date.valid_date?(start_date) == false || Date.valid_date?(end_date) == false
+    valid_date
   end # initialize
+
+  #validate the dates for checkin and checkout
+  def valid_date
+    unless @end_date == nil || @start_date == nil
+      if @end_date < @start_date
+        raise ArgumentError.new('Invalid date range')
+      end
+    end
+  end
 
 
   # calculate days booked to help determine the cost of the reservation
