@@ -34,3 +34,8 @@ Which implementation better adheres to the single responsibility principle?
 
 Bonus question once you've read Metz ch. 3: Which implementation is more loosely coupled?
   Implementation A
+
+
+ Identify one place in your Hotel project where a class takes on multiple roles, or directly modifies the attributes of another class.
+ Describe in design-activity.md what changes you would need to make to improve this design, and how the resulting design would be an improvement.
+    The hotel class takes on multiple roles, it does not modify attributes from the reservation class but, along with storing the reservations and listing the reservations and rooms available it also determines whether a room is available which could be something that a room class could do. To improve this design I would add a room class which would take on storing the rooms and managing whether they were available or not. Then the hotel could call the method in the rooms class as it does in the reservations class to determine whether the room is available and add it to a reservation and/or list available rooms depending on what admin needed to do.

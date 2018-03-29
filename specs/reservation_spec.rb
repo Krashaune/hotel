@@ -41,4 +41,5 @@ describe 'reservations class' do
       new_reservation.total_cost.must_equal 1800
     end
   end
+
 end

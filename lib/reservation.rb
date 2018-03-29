@@ -1,4 +1,4 @@
-require_relative 'hotel'
+
 require 'date'
 require 'pry'
 
@@ -14,14 +14,21 @@ attr_reader :start_date, :end_date, :room_number
     @start_date = start_date
     @end_date = end_date
 
-    valid_date
+
+    date_valid?
   end # initialize
 
   #validate the dates for checkin and checkout
-  def valid_date
+  def date_valid?
     unless @end_date == nil || @start_date == nil
       raise ArgumentError.new('Invalid date range') if @end_date < @start_date
     end
+  end
+
+  def contains?(date)
+    # reservation dates are included or not included in params
+    # room is reserved or available
+    date >= start_date && date <= end_date
   end
 
 
